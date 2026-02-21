@@ -1,0 +1,16 @@
+
+{% block content %}
+    <div class="movie-detail">
+        <h1>{{ movie.title }}</h1>
+        
+        <p><strong>Описание:</strong> {{ movie.description }}</p>
+        <p><strong>Год выпуска:</strong> {{ movie.year|default:"Год не указан" }}</p>
+        <p><strong>Жанр:</strong> {{ movie.genre|default:"Жанр не указан" }}</p>
+        <p><strong>Рейтинг:</strong> {{ movie.rating|default:"Рейтинг не указан" }}</p>
+        <p><strong>Дата создания:</strong> {{ movie.created_at|date:"d M Y H:i" }}</p>
+        <p><strong>Просмотры:</strong> {{ movie.views }}</p>
+        
+        <a href="{% url 'cineboard:movie_update' id=movie.id %}" class="btn btn-edit">Изменить</a>
+        <a href="{% url 'cineboard:movie_delete' id=movie.id %}" class="btn btn-delete">Удалить</a>
+    </div>
+{% endblock %}

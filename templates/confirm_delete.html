@@ -1,0 +1,10 @@
+<h1>Вы хотите удалить — {{ movie_id.title }}?</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Да</button>
+</form>
+
+<a href="/movie/" style="text-decoration: none;">
+    <button type="button">Нет</button>
+</a>

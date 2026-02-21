@@ -1,0 +1,42 @@
+<center>
+
+<button><a href="{% url 'cineboard:movie_create' %}">Добавить</a></button>
+
+<br><br>
+<form action="/search/" method="GET">
+    <input type="text" type="search" name="s" placeholder="Найти книгу">
+    <button type="submit">Найти</button>
+</form>
+
+
+{% for movie in movies %}
+    <div>
+        <h2>{{ movie.title }}</h2>
+        <a href="{% url 'cineboard:movie_detail' id=movie.id %}">Подробнее</a>
+        <a href="{% url 'cineboard:movie_update' id=movie.id %}">Редактировать</a>
+        <a href="{% url 'cineboard:movie_delete' id=movie.id %}">Удалить</a>
+    </div>
+{% endfor %}
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+    {% endif %}
+    
+    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+    
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+    {% endif %}
+</div>
+
+
+<form action="/login/" method="post">
+
+    {% csrf_token %}
+
+    <button type="submit">Выйти из аккаунта</button>
+</form>
+
+</center>
+

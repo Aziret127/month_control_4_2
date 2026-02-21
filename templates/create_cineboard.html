@@ -1,0 +1,15 @@
+<center>
+    <h1>Добавить фильм</h1>
+
+    <form action="{% url 'cineboard:movie_create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit">Добавить</button>
+        
+    </form>
+<center>
+
+
+
